@@ -9,6 +9,7 @@ A Flutter package that converts images to text using Google ML Kit. It supports 
 ✅ Gallery  
 ✅ Network URLs
 ---
+
 ### 📷 Extracting Text from Camera:
 
 <table>
@@ -20,6 +21,7 @@ A Flutter package that converts images to text using Google ML Kit. It supports 
 
   </tr>
  </table>
+
 
 
 
