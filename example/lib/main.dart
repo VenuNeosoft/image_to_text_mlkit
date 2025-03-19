@@ -75,19 +75,19 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
 
             children: [
-              // ElevatedButton(
-              //   onPressed: _pickImageFromGallery,
-              //   child: const Text('Pick Image from Gallery'),
-              // ),
-              // ElevatedButton(
-              //   onPressed: _pickImageFromCamera,
-              //   child: const Text('Pick Image from Camera'),
-              // ),
+              ElevatedButton(
+                onPressed: _pickImageFromGallery,
+                child: const Text('Pick Image from Gallery'),
+              ),
+              ElevatedButton(
+                onPressed: _pickImageFromCamera,
+                child: const Text('Pick Image from Camera'),
+              ),
               const SizedBox(height: 20),
               TextField(
                 controller: _urlController,
                 decoration: const InputDecoration(
-                  labelText: 'Enter Network Image URL',
+                  labelText: 'Enter Image URL',
                   border: OutlineInputBorder(),
                 ),
               ),
