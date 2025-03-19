@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [1.0.1] - Initial Release 🎉
+## [1.0.2] - Initial Release 🎉
 
 ### ✨ New Features
 - ✅ Extract text from images using **Google ML Kit**.

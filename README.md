@@ -18,7 +18,7 @@ A Flutter package that converts images to text using Google ML Kit. It supports 
 Add the following to your `pubspec.yaml`:
 ``` yaml
 dependencies:
-  image_to_text_mlkit: ^1.0.0
+  image_to_text_mlkit: ^1.0.2
   ```
 2. Install Package
 Run the following command:
