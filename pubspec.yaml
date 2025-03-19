@@ -1,6 +1,6 @@
 name: image_to_text_mlkit
 description: "A Flutter package to convert images to text using Google MLKit with support for gallery, camera, and network URLs"
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/VenuNeosoft/image_to_text_mlkit.git
 repository: https://github.com/VenuNeosoft/image_to_text_mlkit.git
 issue_tracker: https://github.com/VenuNeosoft/image_to_text_mlkit.git/issues
