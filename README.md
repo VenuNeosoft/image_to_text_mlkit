@@ -1,39 +1,101 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+Here’s the complete and polished README.md:
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+# 📸 Image to Text MLKit
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Flutter package that converts images to text using Google ML Kit. It supports extracting text from:
 
-## Features
+✅ Camera  
+✅ Gallery  
+✅ Network URLs
+---
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## 🚀 Getting Started
 
-## Getting started
+### 1. **Add Dependency**
+Add this package to your `pubspec.yaml`:
+```yaml
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
 
-## Usage
+dependencies:
+  image_to_text_mlkit: ^1.0.0
+  
+2. Install Package
+Run the following command to install the package:
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+flutter pub get
 
-```dart
-const like = 'sample';
-```
+3. Import the Package
 
-## Additional information
+import 'package:image_to_text_mlkit/image_to_text_mlkit.dart';
+📖 Usage
+🖼️ Pick Image from Gallery
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+final imageToText = ImageToTextMLKit();
+String? text = await imageToText.pickImageFromGallery();
+print(text);
+
+📸 Capture Image from Camera
+
+String? textFromCamera = await imageToText.pickImageFromCamera();
+print(textFromCamera);
+
+🌐 Process Image from URL
+
+String url = 'https://example.com/sample-image.jpg';
+String? textFromUrl = await imageToText.processNetworkImage(url);
+print(textFromUrl);
+
+⚙️ Permissions
+🟢 Android Permissions
+
+Add the following permissions in android/app/src/main/AndroidManifest.xml:
+
+
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.CAMERA"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<application
+    android:requestLegacyExternalStorage="true"
+    android:networkSecurityConfig="@xml/network_security_config"
+    ...
+    
+    
+Add the following permissions in  /android/app/src/main/res/xml/network_security_config.xml
+if you dont have create one file and add below code in xml/network_security_config.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">images.template.net</domain>
+    </domain-config>
+</network-security-config>
+
+
+Add the following permissions in android/app/build.gradle:
+android {
+    compileSdkVersion 34 // Or latest
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 34
+    }
+}
+🍎 iOS Permissions
+
+Add the following keys to your ios/Runner/Info.plist file:
+
+
+<key>NSCameraUsageDescription</key>
+<string>We need camera access to capture and process images.</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>We need access to your photo library to select and process images.</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>We need access to save processed images to your library.</string>
+
+
+
+# 📸 Developed by
+✅ VENU RENANGI  
+✅ SONAM GUPTA
+✅ KAMNA JOSHI
