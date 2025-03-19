@@ -13,45 +13,50 @@ A Flutter package that converts images to text using Google ML Kit. It supports 
 ## 🚀 Getting Started
 
 ### 1. **Add Dependency**
-Add this package to your `pubspec.yaml`:
-```yaml
-
-
+Add the following to your `pubspec.yaml`:
+``` yaml
 dependencies:
   image_to_text_mlkit: ^1.0.0
-  
+  ```
 2. Install Package
-Run the following command to install the package:
+Run the following command:
 
 flutter pub get
 
 3. Import the Package
-
+``` package
 import 'package:image_to_text_mlkit/image_to_text_mlkit.dart';
+```
+
 📖 Usage
 🖼️ Pick Image from Gallery
-
+``` example gallery image to text
 final imageToText = ImageToTextMLKit();
 String? text = await imageToText.pickImageFromGallery();
 print(text);
+```
+
 
 📸 Capture Image from Camera
-
+``` example camera image to text
 String? textFromCamera = await imageToText.pickImageFromCamera();
 print(textFromCamera);
+```
 
 🌐 Process Image from URL
-
+``` example network url image to text
 String url = 'https://example.com/sample-image.jpg';
 String? textFromUrl = await imageToText.processNetworkImage(url);
 print(textFromUrl);
+```
+
 
 ⚙️ Permissions
 🟢 Android Permissions
 
 Add the following permissions in android/app/src/main/AndroidManifest.xml:
 
-
+``` xml
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.CAMERA"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -60,20 +65,23 @@ Add the following permissions in android/app/src/main/AndroidManifest.xml:
     android:requestLegacyExternalStorage="true"
     android:networkSecurityConfig="@xml/network_security_config"
     ...
-    
+ ```
     
 Add the following permissions in  /android/app/src/main/res/xml/network_security_config.xml
 if you dont have create one file and add below code in xml/network_security_config.xml
 
+``` network_security_config.xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">images.template.net</domain>
     </domain-config>
 </network-security-config>
-
+```
 
 Add the following permissions in android/app/build.gradle:
+
+``` xml
 android {
     compileSdkVersion 34 // Or latest
     defaultConfig {
@@ -81,11 +89,12 @@ android {
         targetSdkVersion 34
     }
 }
+```
 🍎 iOS Permissions
 
 Add the following keys to your ios/Runner/Info.plist file:
 
-
+``` plist
 <key>NSCameraUsageDescription</key>
 <string>We need camera access to capture and process images.</string>
 <key>NSPhotoLibraryUsageDescription</key>
@@ -93,7 +102,7 @@ Add the following keys to your ios/Runner/Info.plist file:
 <key>NSPhotoLibraryAddUsageDescription</key>
 <string>We need access to save processed images to your library.</string>
 
-
+```
 
 # 📸 Developed by
 ✅ VENU RENANGI  
