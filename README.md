@@ -10,7 +10,8 @@ A Flutter package that converts images to text using Google ML Kit. It supports 
 ✅ Network URLs
 ---
 ### 📷 Extracting Text from Camera:
-![Camera Demo](https://raw.githubusercontent.com/your-username/image_to_text_assets/main/camera.gif)
+![Camera Demo](https://raw.githubusercontent.com/VenuNeosoft/image_to_text_mlkit/main/camera.gif)
+
 
 ## 🚀 Getting Started
 
