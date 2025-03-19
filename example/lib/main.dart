@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Image to Text Demo',
       home: HomeScreen(),
     );
@@ -64,25 +65,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Image to Text ML Kit')),
+
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+          title: const Text('Image to Text ML Kit')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
+
             children: [
-              ElevatedButton(
-                onPressed: _pickImageFromGallery,
-                child: const Text('Pick Image from Gallery'),
-              ),
-              ElevatedButton(
-                onPressed: _pickImageFromCamera,
-                child: const Text('Pick Image from Camera'),
-              ),
+              // ElevatedButton(
+              //   onPressed: _pickImageFromGallery,
+              //   child: const Text('Pick Image from Gallery'),
+              // ),
+              // ElevatedButton(
+              //   onPressed: _pickImageFromCamera,
+              //   child: const Text('Pick Image from Camera'),
+              // ),
               const SizedBox(height: 20),
               TextField(
                 controller: _urlController,
                 decoration: const InputDecoration(
-                  labelText: 'Enter Image URL',
+                  labelText: 'Enter Network Image URL',
                   border: OutlineInputBorder(),
                 ),
               ),
