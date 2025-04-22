@@ -1,11 +1,13 @@
 import 'dart:io';
-import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:flutter/foundation.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 class ImageToTextMLKit {
   final ImagePicker _picker = ImagePicker();
+  final TextRecognizer _textRecognizer = TextRecognizer();
 
   /// Pick image from gallery and convert to text
   Future<String?> pickImageFromGallery() async {
@@ -37,49 +39,42 @@ class ImageToTextMLKit {
     if (imagePath == null) return null;
 
     final inputImage = InputImage.fromFilePath(imagePath);
-    final textRecognizer = GoogleMlKit.vision.textRecognizer();
-
     try {
       final RecognizedText recognizedText =
-      await textRecognizer.processImage(inputImage);
-      textRecognizer.close();
+          await _textRecognizer.processImage(inputImage);
       return recognizedText.text;
     } catch (e) {
-      textRecognizer.close();
       return 'Error processing image: $e';
     }
   }
 
   /// Download image from URL and save to a temporary file
-  /// Download image from URL and save to a temporary file
   Future<File?> _downloadImage(String imageUrl) async {
     try {
       final response = await http.get(Uri.parse(imageUrl));
 
-      // Check if response is successful
       if (response.statusCode == 200) {
         final directory = await getTemporaryDirectory();
         final filePath = '${directory.path}/temp_image.jpg';
         final file = File(filePath);
-
-        // Write image data to file
         await file.writeAsBytes(response.bodyBytes);
-
-        // Check if the file is properly saved
-        if (await file.exists()) {
-          return file;
-        } else {
-          print('Error: File not created properly.');
-          return null;
-        }
+        return file.existsSync() ? file : null;
       } else {
-        print('Error: Failed to load image. Status Code: ${response.statusCode}');
+        if (kDebugMode) {
+          print('Failed to download image. Status: ${response.statusCode}');
+        }
         return null;
       }
     } catch (e) {
-      print('Error downloading image: $e');
+      if (kDebugMode) {
+        print('Error downloading image: $e');
+      }
       return null;
     }
   }
 
+  /// Call this when done using the class to release resources
+  void dispose() {
+    _textRecognizer.close();
+  }
 }
