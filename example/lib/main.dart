@@ -55,8 +55,9 @@ class HomeScreenState extends State<HomeScreen> {
       return;
     }
 
-    String? text =
-    await _imageToTextMLKit.processImageFromUrl(_urlController.text);
+    String? text = await _imageToTextMLKit.processImageFromUrl(
+      _urlController.text,
+    );
     setState(() {
       _extractedText = text ?? 'No text found';
     });
@@ -65,15 +66,14 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-          title: const Text('Image to Text ML Kit')),
+        title: const Text('Image to Text ML Kit'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
-
             children: [
               ElevatedButton(
                 onPressed: _pickImageFromGallery,
@@ -97,10 +97,7 @@ class HomeScreenState extends State<HomeScreen> {
                 child: const Text('Process Image from URL'),
               ),
               const SizedBox(height: 20),
-              Text(
-                _extractedText,
-                textAlign: TextAlign.left,
-              ),
+              Text(_extractedText, textAlign: TextAlign.left),
             ],
           ),
         ),
